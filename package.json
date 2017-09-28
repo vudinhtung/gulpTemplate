@@ -1,0 +1,36 @@
+{
+  "name": "gulptemplate",
+  "version": "1.0.0",
+  "description": "gulp template for html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "https://github.com/vudinhtung",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "run-sequence": "^1.2.2"
+  },
+  "dependencies": {
+    "browser-sync": "^2.18.8",
+    "del": "^2.2.2",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-copy": "^1.0.0",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "run-sequence": "^1.2.2"
+  }
+}

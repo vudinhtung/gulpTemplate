@@ -1,6 +1,9 @@
 'use strict'
 
 // template
+//test1
+//test2
+//test3
 
 var gulp = require('gulp')
 var sass = require('gulp-sass')

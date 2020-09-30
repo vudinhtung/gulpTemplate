@@ -4,7 +4,13 @@
   "description": "gulp template for html",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall": "npx npm-force-resolutions",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp dev",
+    "build": "gulp build"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
   },
   "author": "https://github.com/vudinhtung",
   "license": "ISC",
@@ -31,6 +37,7 @@
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
+    "natives": "^1.1.6",
     "run-sequence": "^1.2.2"
   }
 }

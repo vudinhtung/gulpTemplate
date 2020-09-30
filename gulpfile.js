@@ -1,21 +1,14 @@
 'use strict'
 
 // template
-//test1
-//test2
-//test3
-//test4
-//test5
-//test6
 
 var gulp = require('gulp')
 var sass = require('gulp-sass')
 var sourcemaps = require('gulp-sourcemaps')
-var plumber = require('gulp-plumber')
 var notify = require('gulp-notify')
 var autoprefixer = require('gulp-autoprefixer')
 var imagemin = require('gulp-imagemin')
-var runSequence = require('run-sequence')
+var runSequence = require('run-sequence').use(gulp)
 var del = require('del')
 var browserSync = require('browser-sync').create()
 var cleanCSS = require('gulp-clean-css')
@@ -156,10 +149,18 @@ gulp.task('clean', function() {
   return del.sync('public')
 })
 
+gulp.task('default', function(callback) {
+  callback = callback || function() {}
+  runSequence(
+    ['styles', 'htmls', 'fonts', 'images', 'scripts'],
+    'watch',
+    callback
+  )
+})
 gulp.task('dev', function(callback) {
   callback = callback || function() {}
   runSequence(
-    ['styles', 'htmls', 'fonts', 'images', 'scripts', 'copysrc'],
+    ['styles', 'htmls', 'fonts', 'images', 'scripts'],
     'watch',
     callback
   )

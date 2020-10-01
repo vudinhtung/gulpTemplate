@@ -40,6 +40,11 @@ var config = {
     dest: 'public/'
   },
 
+  plugins: {
+    src: 'src/plugins/**/*',
+    dest: 'public/plugins'
+  },
+
   dist: {
     root: 'public'
   }
@@ -107,6 +112,11 @@ gulp.task('htmls', function() {
     )
 })
 
+
+gulp.task('plugins', function() {
+  return gulp.src(config.plugins.src).pipe(gulp.dest(config.plugins.dest))
+})
+
 gulp.task('images', function() {
   return gulp
     .src(config.images.src)
@@ -141,18 +151,20 @@ gulp.task('watch', ['browserSync'], function() {
   gulp.watch(config.scripts.src, ['scripts'])
   gulp.watch(config.images.src, ['images'])
   gulp.watch(config.htmls.src, ['htmls'])
+  gulp.watch(config.htmls.src, ['plugins'])
 
   // Other watchers
 })
 
 gulp.task('clean', function() {
-  return del.sync('public')
+  return del.sync(['public/**/*'])
 })
 
 gulp.task('default', function(callback) {
   callback = callback || function() {}
   runSequence(
-    ['styles', 'htmls', 'fonts', 'images', 'scripts'],
+    'clean',
+    ['styles', 'htmls', 'fonts', 'images', 'scripts', 'plugins'],
     'watch',
     callback
   )
@@ -160,7 +172,8 @@ gulp.task('default', function(callback) {
 gulp.task('dev', function(callback) {
   callback = callback || function() {}
   runSequence(
-    ['styles', 'htmls', 'fonts', 'images', 'scripts'],
+    'clean',
+    ['styles', 'htmls', 'fonts', 'images', 'scripts', 'plugins'],
     'watch',
     callback
   )
@@ -168,5 +181,9 @@ gulp.task('dev', function(callback) {
 
 gulp.task('build', function(callback) {
   callback = callback || function() {}
-  runSequence(['styles', 'htmls', 'fonts', 'images', 'scripts'], callback)
+  runSequence(
+    'clean', 
+    ['styles', 'htmls', 'fonts', 'images', 'scripts', 'plugins'], 
+    callback
+  )
 })
